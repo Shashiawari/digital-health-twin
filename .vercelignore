@@ -1,0 +1,14 @@
+api/
+models/
+rag/
+data/
+research/
+tests/
+outputs/
+requirements.txt
+*.py
+*.pkl
+*.pth
+*.json
+*.md
+!vercel.json

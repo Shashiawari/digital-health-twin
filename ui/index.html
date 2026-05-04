@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Health Twin - Predictive Healthcare Workspace</title>
+    <meta name="description" content="Digital Health Twin combines cardiovascular risk prediction, retrieval-assisted health guidance, and explainable clinical insight.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <svg class="icon-sprite" aria-hidden="true" focusable="false">
+        <symbol id="icon-heart-pulse" viewBox="0 0 24 24">
+            <path d="M3 12h4l2-5 4 10 2-5h6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+        </symbol>
+        <symbol id="icon-activity" viewBox="0 0 24 24">
+            <path d="M4 14h4l2.2-7 3.6 11 2.2-7H20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+        </symbol>
+        <symbol id="icon-shield" viewBox="0 0 24 24">
+            <path d="M12 3l7 3v5c0 4.8-2.9 8.9-7 10-4.1-1.1-7-5.2-7-10V6l7-3z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+        </symbol>
+        <symbol id="icon-message" viewBox="0 0 24 24">
+            <path d="M5 18l-1 3 3-1h10a4 4 0 0 0 4-4V8a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v8a4 4 0 0 0 2 3.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+        </symbol>
+        <symbol id="icon-brain" viewBox="0 0 24 24">
+            <path d="M9 4a3 3 0 0 0-3 3v1a3 3 0 0 0-2 2.8V11a3 3 0 0 0 2 2.8V15a3 3 0 0 0 3 3m6-14a3 3 0 0 1 3 3v1a3 3 0 0 1 2 2.8V11a3 3 0 0 1-2 2.8V15a3 3 0 0 1-3 3m-6-9v8m6-8v8M9 10h6m-6 4h6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+        </symbol>
+        <symbol id="icon-search" viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"></circle>
+            <path d="M16 16l4 4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path>
+        </symbol>
+        <symbol id="icon-user" viewBox="0 0 24 24">
+            <circle cx="12" cy="8" r="3.5" fill="none" stroke="currentColor" stroke-width="1.8"></circle>
+            <path d="M5 19a7 7 0 0 1 14 0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path>
+        </symbol>
+        <symbol id="icon-clipboard" viewBox="0 0 24 24">
+            <path d="M9 4h6l1 2h2a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h2l1-2z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path>
+            <path d="M9 10h6M9 14h6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path>
+        </symbol>
+        <symbol id="icon-send" viewBox="0 0 24 24">
+            <path d="M4 12l15-7-3 7 3 7-15-7zm12 0H8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+        </symbol>
+        <symbol id="icon-spark" viewBox="0 0 24 24">
+            <path d="M12 3l1.7 4.3L18 9l-4.3 1.7L12 15l-1.7-4.3L6 9l4.3-1.7L12 3z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path>
+            <path d="M19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9L19 15zM5 14l.7 1.5L7 16l-1.3.5L5 18l-.7-1.5L3 16l1.3-.5L5 14z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.6"></path>
+        </symbol>
+        <symbol id="icon-alert" viewBox="0 0 24 24">
+            <path d="M12 4l8 14H4L12 4z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path>
+            <path d="M12 9v4m0 3h.01" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path>
+        </symbol>
+        <symbol id="icon-check" viewBox="0 0 24 24">
+            <path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+        </symbol>
+        <symbol id="icon-layers" viewBox="0 0 24 24">
+            <path d="M12 4l8 4-8 4-8-4 8-4zm8 8l-8 4-8-4m16 4l-8 4-8-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+        </symbol>
+    </svg>
+
+    <div class="page-shell">
+        <div class="bg-pattern"></div>
+        <div class="bg-orb orb-a"></div>
+        <div class="bg-orb orb-b"></div>
+
+        <header class="header" id="header">
+            <div class="header-inner">
+                <div class="logo">
+                    <div class="logo-mark">
+                        <svg class="icon icon-lg"><use href="#icon-heart-pulse"></use></svg>
+                    </div>
+                    <div>
+                        <p class="logo-kicker">Clinical Intelligence Workspace</p>
+                        <div class="logo-row">
+                            <span class="logo-text">Digital Health Twin</span>
+                            <span class="logo-badge">Live</span>
+                        </div>
+                    </div>
+                </div>
+                <nav class="nav">
+                    <a href="#" class="nav-link active" data-tab="predictor">Risk Predictor</a>
+                    <a href="#" class="nav-link" data-tab="assistant">Health Assistant</a>
+                    <a href="#" class="nav-link" data-tab="insight">Insight Engine</a>
+                </nav>
+                <div class="header-actions">
+                    <div class="status-pill" id="apiStatusPill">
+                        <span class="status-dot" id="apiStatusDot"></span>
+                        <span class="status-text" id="apiStatusText">System online</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="main">
+            <section class="tab-content active" id="predictor">
+                <div class="section-header">
+                    <div class="section-copy">
+                        <span class="section-kicker">Cardiovascular Assessment</span>
+                        <h1>Patient Risk Predictor</h1>
+                        <p>Structured intake for cardiovascular screening with mental-health context and explainable model output.</p>
+                    </div>
+                    <div class="section-meta">
+                        <div class="meta-card">
+                            <span class="meta-label">Coverage</span>
+                            <strong>18 patient inputs</strong>
+                        </div>
+                        <div class="meta-card">
+                            <span class="meta-label">Output</span>
+                            <strong>Risk score + drivers</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="predictor-layout">
+                    <div class="input-panel glass-card">
+                        <div class="panel-heading">
+                            <h2 class="panel-title">
+                                <span class="panel-icon"><svg class="icon"><use href="#icon-clipboard"></use></svg></span>
+                                Patient Data
+                            </h2>
+                            <p class="panel-desc">Capture baseline vitals, cardiac markers, and lifestyle signals before generating a prediction.</p>
+                        </div>
+
+                        <form id="predictForm" class="patient-form">
+                            <div class="form-grid">
+                                <div class="form-group"><label>Age</label><input type="number" id="age" value="55" min="1" max="120"></div>
+                                <div class="form-group"><label>Sex</label><select id="sex"><option value="1">Male</option><option value="0">Female</option></select></div>
+                                <div class="form-group"><label>Chest Pain</label><select id="cp"><option value="0">Typical Angina</option><option value="1">Atypical</option><option value="2" selected>Non-anginal</option><option value="3">Asymptomatic</option></select></div>
+                                <div class="form-group"><label>Blood Pressure <span class="unit">mmHg</span></label><input type="number" id="trestbps" value="140"></div>
+                                <div class="form-group"><label>Cholesterol <span class="unit">mg/dL</span></label><input type="number" id="chol" value="250"></div>
+                                <div class="form-group"><label>Fasting BS &gt;120</label><select id="fbs"><option value="0">No</option><option value="1">Yes</option></select></div>
+                                <div class="form-group"><label>Max Heart Rate <span class="unit">bpm</span></label><input type="number" id="thalach" value="140"></div>
+                                <div class="form-group"><label>Exercise Angina</label><select id="exang"><option value="0">No</option><option value="1">Yes</option></select></div>
+                                <div class="form-group"><label>ST Depression</label><input type="number" id="oldpeak" value="1.5" step="0.1"></div>
+                                <div class="form-group"><label>Resting ECG</label><select id="restecg"><option value="0">Normal</option><option value="1">ST-T Abnormality</option><option value="2">LV Hypertrophy</option></select></div>
+                                <div class="form-group"><label>ST Slope</label><select id="slope"><option value="0">Upsloping</option><option value="1" selected>Flat</option><option value="2">Downsloping</option></select></div>
+                                <div class="form-group"><label>Major Vessels</label><select id="ca"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option></select></div>
+                                <div class="form-group"><label>Thalassemia</label><select id="thal"><option value="1">Normal</option><option value="2" selected>Fixed Defect</option><option value="3">Reversible</option></select></div>
+                            </div>
+
+                            <h3 class="subsection-title">
+                                <span class="panel-icon"><svg class="icon"><use href="#icon-brain"></use></svg></span>
+                                Mental and Lifestyle Factors
+                            </h3>
+                            <div class="form-grid">
+                                <div class="form-group slider-group"><label>Stress Level <span class="slider-value" id="stress_val">7</span>/10</label><input type="range" id="stress_level" min="1" max="10" step="0.5" value="7" class="slider" oninput="document.getElementById('stress_val').textContent=this.value"></div>
+                                <div class="form-group slider-group"><label>Sleep Quality <span class="slider-value" id="sleep_val">5</span>/10</label><input type="range" id="sleep_quality" min="1" max="10" step="0.5" value="5" class="slider" oninput="document.getElementById('sleep_val').textContent=this.value"></div>
+                                <div class="form-group"><label>Activity <span class="unit">hrs/wk</span></label><input type="number" id="activity_hours" value="3" step="0.5"></div>
+                                <div class="form-group"><label>Anxiety (GAD-7)</label><input type="number" id="anxiety_score" value="10" min="0" max="21"></div>
+                                <div class="form-group"><label>BMI</label><input type="number" id="bmi" value="28" step="0.1"></div>
+                            </div>
+
+                            <button type="submit" class="btn-primary" id="predictBtn">
+                                <svg class="icon btn-icon"><use href="#icon-activity"></use></svg>
+                                <span>Predict Risk</span>
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="result-panel">
+                        <div class="overview-card glass-card">
+                            <span class="overview-label">Prediction Workspace</span>
+                            <h3>Focused clinical output without noisy styling.</h3>
+                            <p>Your results panel keeps the same model logic, but presents the score, confidence, and contributing factors in a cleaner review-friendly layout.</p>
+                        </div>
+
+                        <div class="glass-card risk-card" id="riskCard" style="display:none;">
+                            <div class="risk-header">
+                                <div class="risk-gauge" id="riskGauge">
+                                    <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="54" class="gauge-bg"></circle><circle cx="60" cy="60" r="54" class="gauge-fill" id="gaugeFill"></circle></svg>
+                                    <div class="gauge-text"><span class="gauge-value" id="gaugeValue">0%</span><span class="gauge-label" id="gaugeLabel">Risk</span></div>
+                                </div>
+                                <div class="risk-info">
+                                    <span class="eyebrow">Assessment Result</span>
+                                    <h3 id="riskLabel" class="risk-title">-</h3>
+                                    <p id="riskLevel" class="risk-subtitle">-</p>
+                                    <p id="modelUsed" class="risk-model">-</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="glass-card factors-card" id="factorsCard" style="display:none;">
+                            <h3 class="panel-title">
+                                <span class="panel-icon"><svg class="icon"><use href="#icon-alert"></use></svg></span>
+                                Risk Factors
+                            </h3>
+                            <div id="factorsList" class="factors-list"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="tab-content" id="assistant">
+                <div class="section-header">
+                    <div class="section-copy">
+                        <span class="section-kicker">Retrieval-Assisted Guidance</span>
+                        <h1>Health Assistant</h1>
+                        <p>Ask natural-language health questions and review responses grounded in the patient knowledge base.</p>
+                    </div>
+                    <div class="section-meta">
+                        <div class="meta-card">
+                            <span class="meta-label">Mode</span>
+                            <strong>Conversational RAG</strong>
+                        </div>
+                        <div class="meta-card">
+                            <span class="meta-label">Traceability</span>
+                            <strong>Source tags included</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="assistant-layout">
+                    <div class="chat-container glass-card">
+                        <div class="chat-toolbar">
+                            <div>
+                                <h2 class="panel-title">
+                                    <span class="panel-icon"><svg class="icon"><use href="#icon-search"></use></svg></span>
+                                    Context-Aware Assistant
+                                </h2>
+                                <p class="panel-desc">Use the prompts below or type a question to retrieve supporting context from similar patient records.</p>
+                            </div>
+                        </div>
+
+                        <div class="chat-messages" id="chatMessages">
+                            <div class="chat-message bot">
+                                <div class="message-avatar assistant-avatar"><svg class="icon"><use href="#icon-brain"></use></svg></div>
+                                <div class="message-content">
+                                    <p>Hello. I can help you inspect cardiovascular risk patterns, stress-related signals, and similar-patient context.</p>
+                                    <div class="suggested-queries">
+                                        <button class="suggestion" onclick="askSuggestion(this)">What health risks does a 55-year-old male with high cholesterol have?</button>
+                                        <button class="suggestion" onclick="askSuggestion(this)">Tell me about patients with high stress and anxiety</button>
+                                        <button class="suggestion" onclick="askSuggestion(this)">What are the main risk factors for heart disease?</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <form class="chat-input-form" id="chatForm">
+                            <input type="text" id="chatInput" placeholder="Ask a health question..." autocomplete="off" required>
+                            <button type="submit" class="btn-send" id="sendBtn" aria-label="Send message">
+                                <svg class="icon"><use href="#icon-send"></use></svg>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <section class="tab-content" id="insight">
+                <div class="section-header">
+                    <div class="section-copy">
+                        <span class="section-kicker">Explainability Layer</span>
+                        <h1>Insight Engine</h1>
+                        <p>Blend model output with retrieval context to produce an explainable narrative, recommendations, and similar-patient matches.</p>
+                    </div>
+                    <div class="section-meta">
+                        <div class="meta-card">
+                            <span class="meta-label">Profiles</span>
+                            <strong>4 quick scenarios</strong>
+                        </div>
+                        <div class="meta-card">
+                            <span class="meta-label">Result</span>
+                            <strong>Actionable summary</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="insight-layout">
+                    <div class="glass-card">
+                        <div class="panel-heading">
+                            <h2 class="panel-title">
+                                <span class="panel-icon"><svg class="icon"><use href="#icon-user"></use></svg></span>
+                                Quick Patient Profiles
+                            </h2>
+                            <p class="panel-desc">Select a sample profile or use the custom data you entered in the prediction workspace.</p>
+                        </div>
+
+                        <div class="profile-grid">
+                            <button class="profile-btn active" onclick="loadProfile('healthy')" id="profile-healthy">
+                                <span class="profile-topline">
+                                    <span class="profile-icon tone-green"><svg class="icon"><use href="#icon-check"></use></svg></span>
+                                    <span class="profile-tag">Low Risk</span>
+                                </span>
+                                <span class="profile-name">Healthy Adult</span>
+                                <span class="profile-desc">38F, normal vitals</span>
+                            </button>
+                            <button class="profile-btn" onclick="loadProfile('moderate')" id="profile-moderate">
+                                <span class="profile-topline">
+                                    <span class="profile-icon tone-amber"><svg class="icon"><use href="#icon-activity"></use></svg></span>
+                                    <span class="profile-tag">Moderate</span>
+                                </span>
+                                <span class="profile-name">Moderate Risk</span>
+                                <span class="profile-desc">52M, borderline cholesterol</span>
+                            </button>
+                            <button class="profile-btn" onclick="loadProfile('high')" id="profile-high">
+                                <span class="profile-topline">
+                                    <span class="profile-icon tone-red"><svg class="icon"><use href="#icon-alert"></use></svg></span>
+                                    <span class="profile-tag">Escalated</span>
+                                </span>
+                                <span class="profile-name">High Risk</span>
+                                <span class="profile-desc">62M, multi-factor profile</span>
+                            </button>
+                            <button class="profile-btn" onclick="loadProfile('mental')" id="profile-mental">
+                                <span class="profile-topline">
+                                    <span class="profile-icon tone-sky"><svg class="icon"><use href="#icon-brain"></use></svg></span>
+                                    <span class="profile-tag">Behavioral</span>
+                                </span>
+                                <span class="profile-name">Mental Health</span>
+                                <span class="profile-desc">45F, elevated anxiety</span>
+                            </button>
+                        </div>
+
+                        <div class="action-row">
+                            <button class="btn-primary" id="insightBtn" onclick="generateInsight()">
+                                <svg class="icon btn-icon"><use href="#icon-spark"></use></svg>
+                                <span>Generate Full Insight</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="insight-results" id="insightResults" style="display:none;">
+                        <div class="glass-card insight-summary" id="insightSummary"></div>
+                        <div class="glass-card">
+                            <h3 class="panel-title">
+                                <span class="panel-icon"><svg class="icon"><use href="#icon-search"></use></svg></span>
+                                RAG Context
+                            </h3>
+                            <p id="ragContext"></p>
+                        </div>
+                        <div class="glass-card">
+                            <h3 class="panel-title">
+                                <span class="panel-icon"><svg class="icon"><use href="#icon-spark"></use></svg></span>
+                                Recommendations
+                            </h3>
+                            <ul id="recsList"></ul>
+                        </div>
+                        <div class="glass-card">
+                            <h3 class="panel-title">
+                                <span class="panel-icon"><svg class="icon"><use href="#icon-user"></use></svg></span>
+                                Similar Patients
+                            </h3>
+                            <div id="similarList"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>Digital Health Twin v1.0</p>
+            <p class="footer-sub">FastAPI, scikit-learn, XGBoost, PyTorch, ChromaDB, and retrieval-augmented insight in a refined front-end shell.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
