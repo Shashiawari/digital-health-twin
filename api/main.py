@@ -38,7 +38,7 @@ app = FastAPI(
         "predictive healthcare with mental and physical health integration."
     ),
     version="1.0.0",
-    contact={"name": "Shashi", "url": "https://github.com/shashi"},
+    contact={"name": "Shashi", "url": "https://github.com/shashiawari"},
 )
 
 # CORS for frontend
